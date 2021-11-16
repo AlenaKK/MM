@@ -2,6 +2,11 @@
 #include "math.h"
 #include<iostream>
 using namespace std;
+
+void Privet() {
+	cout << "Privet krasotka!" << endl;
+}
+
 four4angel::four4angel(void)
 {
 	for (int i = 0; i < NUM_POINTS;i++)
