@@ -2,6 +2,9 @@
 #include "math.h"
 #include<iostream>
 using namespace std;
+// это ветка разработчика
+
+
 four4angel::four4angel(void)
 {
 	for (int i = 0; i < NUM_POINTS;i++)
