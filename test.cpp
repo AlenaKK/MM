@@ -2,6 +2,7 @@
 #include "math.h"
 #include<iostream>
 using namespace std;
+
 // это ветка разработчика
 
 
@@ -14,7 +15,7 @@ four4angel::four4angel(void)
 		cout << "I don't have problems" << endl;
 	}
 }
-void four4angel::calcVectors() // функция считающая и выводящая вектора 
+void four4angel::calcVectors() // ГґГіГ­ГЄГ¶ГЁГї Г±Г·ГЁГІГ ГѕГ№Г Гї ГЁ ГўГ»ГўГ®Г¤ГїГ№Г Гї ГўГҐГЄГІГ®Г°Г  
 {
 	p[NUM_POINTS].x = p[0].x;
 	p[NUM_POINTS].y = p[0].y;
@@ -22,7 +23,7 @@ void four4angel::calcVectors() // функция считающая и выводящая вектора
 	{
 		v[i].x = p[i + 1].x - p[i].x;
 		v[i].y = p[i + 1].y - p[i].y;
-		cout << "Координаты " << i+1 << " вектора " << v[i].x << '\t' << v[i].y << endl;
+		cout << "ГЉГ®Г®Г°Г¤ГЁГ­Г ГІГ» " << i+1 << " ГўГҐГЄГІГ®Г°Г  " << v[i].x << '\t' << v[i].y << endl;
 	}
 	d1.x = p[2].x - p[0].x;
 	d1.y = p[2].y - p[0].y;
@@ -57,26 +58,26 @@ four4angel::four4angel(vect* _v)
 }
 four4angel::four4angel(double _s1, double _s2, double _s3, double _s4, double _u)
 {
-	_u = _u * Pi / 180; // переводим в радианы
+	_u = _u * Pi / 180; // ГЇГҐГ°ГҐГўГ®Г¤ГЁГ¬ Гў Г°Г Г¤ГЁГ Г­Г»
 	p[0].x = 0.0;
 	p[0].y = 0.0;
 	p[1].x = _s1;
 	p[1].y = 0.0;
 	p[3].x = _s4 * round(cos(_u));
 	p[3].y = _s4 * round(sin(_u));
-	double Diagonal_naprotiv_ugla = sqrt(pow(_s4, 2) + pow(_s1, 2) - 2 *_s1*_s4* cos(_u)); // по теореме косинусов
-	double Ugol_4_1 = acos((pow(_s4, 2) - pow(_s1, 2) - pow(Diagonal_naprotiv_ugla, 2)) / ((-2) * Diagonal_naprotiv_ugla * _s1)); // угол под диагональю сверху
-	double Ugol_4_2= acos((pow(_s3, 2) - pow(_s2, 2) - pow(Diagonal_naprotiv_ugla, 2)) / ((-2) * _s2 * Diagonal_naprotiv_ugla)); // угол над диагональю сверху
+	double Diagonal_naprotiv_ugla = sqrt(pow(_s4, 2) + pow(_s1, 2) - 2 *_s1*_s4* cos(_u)); // ГЇГ® ГІГҐГ®Г°ГҐГ¬ГҐ ГЄГ®Г±ГЁГ­ГіГ±Г®Гў
+	double Ugol_4_1 = acos((pow(_s4, 2) - pow(_s1, 2) - pow(Diagonal_naprotiv_ugla, 2)) / ((-2) * Diagonal_naprotiv_ugla * _s1)); // ГіГЈГ®Г« ГЇГ®Г¤ Г¤ГЁГ ГЈГ®Г­Г Г«ГјГѕ Г±ГўГҐГ°ГµГі
+	double Ugol_4_2= acos((pow(_s3, 2) - pow(_s2, 2) - pow(Diagonal_naprotiv_ugla, 2)) / ((-2) * _s2 * Diagonal_naprotiv_ugla)); // ГіГЈГ®Г« Г­Г Г¤ Г¤ГЁГ ГЈГ®Г­Г Г«ГјГѕ Г±ГўГҐГ°ГµГі
 	double Ugol_4 = Ugol_4_1 + Ugol_4_2; 
-	double Diagonal_iz_ugla = sqrt(pow(_s1, 2) + pow(_s2, 2) - 2 * _s1 * _s2 * cos(Ugol_4)); // по теореме косинусов
-	double Ugol_1_1 = asin((_s2 * sin(Ugol_4)) / (Diagonal_iz_ugla)); // часть известного угла под диагональю, выходящей из него
+	double Diagonal_iz_ugla = sqrt(pow(_s1, 2) + pow(_s2, 2) - 2 * _s1 * _s2 * cos(Ugol_4)); // ГЇГ® ГІГҐГ®Г°ГҐГ¬ГҐ ГЄГ®Г±ГЁГ­ГіГ±Г®Гў
+	double Ugol_1_1 = asin((_s2 * sin(Ugol_4)) / (Diagonal_iz_ugla)); // Г·Г Г±ГІГј ГЁГ§ГўГҐГ±ГІГ­Г®ГЈГ® ГіГЈГ«Г  ГЇГ®Г¤ Г¤ГЁГ ГЈГ®Г­Г Г«ГјГѕ, ГўГ»ГµГ®Г¤ГїГ№ГҐГ© ГЁГ§ Г­ГҐГЈГ®
 
 	p[2].x = Diagonal_iz_ugla * cos(Ugol_1_1);
 	p[2].y = Diagonal_iz_ugla * sin(Ugol_1_1);
 
 	calcVectors();
 }
-void four4angel::calcVectors3d() // функция считающая и выводящая вектора 
+void four4angel::calcVectors3d() // ГґГіГ­ГЄГ¶ГЁГї Г±Г·ГЁГІГ ГѕГ№Г Гї ГЁ ГўГ»ГўГ®Г¤ГїГ№Г Гї ГўГҐГЄГІГ®Г°Г  
 {
 	p[NUM_POINTS].x = p[0].x;
 	p[NUM_POINTS].y = p[0].y;
@@ -88,15 +89,15 @@ void four4angel::calcVectors3d() // функция считающая и выводящая вектора
 		v2[i].x = 0.0;
 		v2[i].y = 0.0;
 		v2[i].z = h;
-		cout << "Координаты " << i + 1 << " вектора " << v[i].x << '\t' << v[i].y << '\t' << v[i].z << endl;
+		cout << "ГЉГ®Г®Г°Г¤ГЁГ­Г ГІГ» " << i + 1 << " ГўГҐГЄГІГ®Г°Г  " << v[i].x << '\t' << v[i].y << '\t' << v[i].z << endl;
 	}
 	for (int i = 0; i < NUM_POINTS;i++)
 	{
-		cout << "Координаты " << i + 1 + 4 << " вектора " << v2[i].x << '\t' << v2[i].y << '\t' << v2[i].z << endl;
+		cout << "ГЉГ®Г®Г°Г¤ГЁГ­Г ГІГ» " << i + 1 + 4 << " ГўГҐГЄГІГ®Г°Г  " << v2[i].x << '\t' << v2[i].y << '\t' << v2[i].z << endl;
 	}
 	for (int i = 0; i < NUM_POINTS;i++)
 	{
-		cout << "Координаты " << i + 1 + 8 << " вектора " << v[i].x << '\t' << v[i].y << '\t' << v[i].z << endl;
+		cout << "ГЉГ®Г®Г°Г¤ГЁГ­Г ГІГ» " << i + 1 + 8 << " ГўГҐГЄГІГ®Г°Г  " << v[i].x << '\t' << v[i].y << '\t' << v[i].z << endl;
 	}
 	d1.x = p[2].x - p[0].x;
 	d1.y = p[2].y - p[0].y;
@@ -143,7 +144,7 @@ four4angel::four4angel(vect* _v, double _h)
 four4angel::four4angel(double _s1, double _s2, double _s3, double _s4, double _u, double _h)
 {
 	h = _h;
-	_u = _u * Pi / 180; // переводим в радианы
+	_u = _u * Pi / 180; // ГЇГҐГ°ГҐГўГ®Г¤ГЁГ¬ Гў Г°Г Г¤ГЁГ Г­Г»
 	p[0].x = p2[0].x = 0.0;
 	p[0].y = p2[0].y = 0.0;
 	p[0].z = 0.0;
@@ -156,12 +157,12 @@ four4angel::four4angel(double _s1, double _s2, double _s3, double _s4, double _u
 	p[3].y = p2[3].y = _s4 * round(sin(_u));
 	p[3].z = 0.0;
 	p2[3].z = h;
-	double Diagonal_naprotiv_ugla = sqrt(pow(_s4, 2) + pow(_s1, 2) - 2 * _s1 * _s4 * cos(_u)); // по теореме косинусов
-	double Ugol_4_1 = acos((pow(_s4, 2) - pow(_s1, 2) - pow(Diagonal_naprotiv_ugla, 2)) / ((-2) * Diagonal_naprotiv_ugla * _s1)); // угол под диагональю сверху
-	double Ugol_4_2 = acos((pow(_s3, 2) - pow(_s2, 2) - pow(Diagonal_naprotiv_ugla, 2)) / ((-2) * _s2 * Diagonal_naprotiv_ugla)); // угол над диагональю сверху
+	double Diagonal_naprotiv_ugla = sqrt(pow(_s4, 2) + pow(_s1, 2) - 2 * _s1 * _s4 * cos(_u)); // ГЇГ® ГІГҐГ®Г°ГҐГ¬ГҐ ГЄГ®Г±ГЁГ­ГіГ±Г®Гў
+	double Ugol_4_1 = acos((pow(_s4, 2) - pow(_s1, 2) - pow(Diagonal_naprotiv_ugla, 2)) / ((-2) * Diagonal_naprotiv_ugla * _s1)); // ГіГЈГ®Г« ГЇГ®Г¤ Г¤ГЁГ ГЈГ®Г­Г Г«ГјГѕ Г±ГўГҐГ°ГµГі
+	double Ugol_4_2 = acos((pow(_s3, 2) - pow(_s2, 2) - pow(Diagonal_naprotiv_ugla, 2)) / ((-2) * _s2 * Diagonal_naprotiv_ugla)); // ГіГЈГ®Г« Г­Г Г¤ Г¤ГЁГ ГЈГ®Г­Г Г«ГјГѕ Г±ГўГҐГ°ГµГі
 	double Ugol_4 = Ugol_4_1 + Ugol_4_2;
-	double Diagonal_iz_ugla = sqrt(pow(_s1, 2) + pow(_s2, 2) - 2 * _s1 * _s2 * cos(Ugol_4)); // по теореме косинусов
-	double Ugol_1_1 = asin((_s2 * sin(Ugol_4)) / (Diagonal_iz_ugla)); // часть известного угла под диагональю, выходящей из него
+	double Diagonal_iz_ugla = sqrt(pow(_s1, 2) + pow(_s2, 2) - 2 * _s1 * _s2 * cos(Ugol_4)); // ГЇГ® ГІГҐГ®Г°ГҐГ¬ГҐ ГЄГ®Г±ГЁГ­ГіГ±Г®Гў
+	double Ugol_1_1 = asin((_s2 * sin(Ugol_4)) / (Diagonal_iz_ugla)); // Г·Г Г±ГІГј ГЁГ§ГўГҐГ±ГІГ­Г®ГЈГ® ГіГЈГ«Г  ГЇГ®Г¤ Г¤ГЁГ ГЈГ®Г­Г Г«ГјГѕ, ГўГ»ГµГ®Г¤ГїГ№ГҐГ© ГЁГ§ Г­ГҐГЈГ®
 
 	p[2].x = p2[2].x = Diagonal_iz_ugla * cos(Ugol_1_1);
 	p[2].y = p2[2].y = Diagonal_iz_ugla * sin(Ugol_1_1);
@@ -170,66 +171,66 @@ four4angel::four4angel(double _s1, double _s2, double _s3, double _s4, double _u
 
 	calcVectors3d();
 }
-double scalVect(point v1, point v2) // скалярное произведение векторов
+double scalVect(point v1, point v2) // Г±ГЄГ Г«ГїГ°Г­Г®ГҐ ГЇГ°Г®ГЁГ§ГўГҐГ¤ГҐГ­ГЁГҐ ГўГҐГЄГІГ®Г°Г®Гў
 {
 	return v1.x * v2.x + v1.y * v2.y;
 };
-double ugolvect(point v1, point v2) // нахождение угла в радианах между двумя векторами
+double ugolvect(point v1, point v2) // Г­Г ГµГ®Г¦Г¤ГҐГ­ГЁГҐ ГіГЈГ«Г  Гў Г°Г Г¤ГЁГ Г­Г Гµ Г¬ГҐГ¦Г¤Гі Г¤ГўГіГ¬Гї ГўГҐГЄГІГ®Г°Г Г¬ГЁ
 {
 	return acos(scalVect(v1, v2) / sqrt(scalVect(v1, v1) * scalVect(v2, v2)));
 };
-void four4angel::PrintCord(int i) // вывод координат точек
+void four4angel::PrintCord(int i) // ГўГ»ГўГ®Г¤ ГЄГ®Г®Г°Г¤ГЁГ­Г ГІ ГІГ®Г·ГҐГЄ
 {
 	if (i-1 >= 4||i-1<0)
-		cout << "Такой точки нет"<< endl;
+		cout << "Г’Г ГЄГ®Г© ГІГ®Г·ГЄГЁ Г­ГҐГІ"<< endl;
 	else
-		cout << "Координаты " << i << " точки " << "  " << p[i-1].x << '\t' << p[i-1].y << endl;
+		cout << "ГЉГ®Г®Г°Г¤ГЁГ­Г ГІГ» " << i << " ГІГ®Г·ГЄГЁ " << "  " << p[i-1].x << '\t' << p[i-1].y << endl;
 }
-void four4angel::PrintCord3d(int i) // вывод координат точек
+void four4angel::PrintCord3d(int i) // ГўГ»ГўГ®Г¤ ГЄГ®Г®Г°Г¤ГЁГ­Г ГІ ГІГ®Г·ГҐГЄ
 {
 	if (i - 1 >= 8 || i - 1 < 0)
-		cout << "Такой точки нет" << endl;
+		cout << "Г’Г ГЄГ®Г© ГІГ®Г·ГЄГЁ Г­ГҐГІ" << endl;
 	else
 		if (i <= 4)
-			cout << "Координаты " << i << " точки " << "  " << p[i - 1].x << '\t' << p[i - 1].y << '\t' << p[i - 1].z << endl;
+			cout << "ГЉГ®Г®Г°Г¤ГЁГ­Г ГІГ» " << i << " ГІГ®Г·ГЄГЁ " << "  " << p[i - 1].x << '\t' << p[i - 1].y << '\t' << p[i - 1].z << endl;
 		else
-			cout << "Координаты " << i << " точки " << "  " << p2[i - 5].x << '\t' << p2[i - 5].y << '\t' << p2[i - 5].z << endl;
+			cout << "ГЉГ®Г®Г°Г¤ГЁГ­Г ГІГ» " << i << " ГІГ®Г·ГЄГЁ " << "  " << p2[i - 5].x << '\t' << p2[i - 5].y << '\t' << p2[i - 5].z << endl;
 }
-void four4angel::PrintDlin(int i) // вывод длин сторон
+void four4angel::PrintDlin(int i) // ГўГ»ГўГ®Г¤ Г¤Г«ГЁГ­ Г±ГІГ®Г°Г®Г­
 {
 	if (i - 1 >= 4 || i - 1 < 0)
-		cout << "Такой стороны нет";
+		cout << "Г’Г ГЄГ®Г© Г±ГІГ®Г°Г®Г­Г» Г­ГҐГІ";
 	else
-		cout << "Длина "<< i << " стороны равна "<< mv[i-1];
+		cout << "Г„Г«ГЁГ­Г  "<< i << " Г±ГІГ®Г°Г®Г­Г» Г°Г ГўГ­Г  "<< mv[i-1];
 }
-void four4angel::PrintDlin3d(int i) // вывод длин сторон
+void four4angel::PrintDlin3d(int i) // ГўГ»ГўГ®Г¤ Г¤Г«ГЁГ­ Г±ГІГ®Г°Г®Г­
 {
 	if (i - 1 >= 12 || i - 1 < 0)
-		cout << "Такой стороны нет";
+		cout << "Г’Г ГЄГ®Г© Г±ГІГ®Г°Г®Г­Г» Г­ГҐГІ";
 	else
 		if(i<=4)
-			cout << "Длина " << i << " стороны равна " << mv[i - 1];
+			cout << "Г„Г«ГЁГ­Г  " << i << " Г±ГІГ®Г°Г®Г­Г» Г°Г ГўГ­Г  " << mv[i - 1];
 	    if (i>4 && i<=8 )
-		    cout << "Длина " << i << " стороны равна " << h;
+		    cout << "Г„Г«ГЁГ­Г  " << i << " Г±ГІГ®Г°Г®Г­Г» Г°Г ГўГ­Г  " << h;
 		if (i>8)
-			cout << "Длина " << i << " стороны равна " << mv[i - 9];
+			cout << "Г„Г«ГЁГ­Г  " << i << " Г±ГІГ®Г°Г®Г­Г» Г°Г ГўГ­Г  " << mv[i - 9];
 }
-void four4angel::Diagonali() // вывод длин диагоналей
+void four4angel::Diagonali() // ГўГ»ГўГ®Г¤ Г¤Г«ГЁГ­ Г¤ГЁГ ГЈГ®Г­Г Г«ГҐГ©
 {
 	d11 = sqrt(pow((p[0].x - p[2].x), 2) + pow((p[0].y - p[2].y), 2));
 	d22 = sqrt(pow((p[1].x - p[3].x), 2) + pow((p[1].y - p[3].y), 2));
 	cout << d11 << '\t' << d22;
 }
-void four4angel::Diagonali3d() // вывод длин диагоналей
+void four4angel::Diagonali3d() // ГўГ»ГўГ®Г¤ Г¤Г«ГЁГ­ Г¤ГЁГ ГЈГ®Г­Г Г«ГҐГ©
 {
 	d11 = sqrt(pow((p[0].x - p[2].x), 2) + pow((p[0].y - p[2].y), 2));
 	d22 = sqrt(pow((p[1].x - p[3].x), 2) + pow((p[1].y - p[3].y), 2));
 	d3d1 = sqrt(pow(d11, 2) + pow(h, 2));
 	d3d2 = sqrt(pow(d22, 2) + pow(h, 2));
-	cout << "Диагонали оснований равны " << d11 << '\t' << d22<< endl;
-	cout << "Длины диагоналей призмы равны " << d3d1 << '\t' << d3d2;
+	cout << "Г„ГЁГ ГЈГ®Г­Г Г«ГЁ Г®Г±Г­Г®ГўГ Г­ГЁГ© Г°Г ГўГ­Г» " << d11 << '\t' << d22<< endl;
+	cout << "Г„Г«ГЁГ­Г» Г¤ГЁГ ГЈГ®Г­Г Г«ГҐГ© ГЇГ°ГЁГ§Г¬Г» Г°Г ГўГ­Г» " << d3d1 << '\t' << d3d2;
 }
-double four4angel::Perimetr() // вычисление периметра
+double four4angel::Perimetr() // ГўГ»Г·ГЁГ±Г«ГҐГ­ГЁГҐ ГЇГҐГ°ГЁГ¬ГҐГІГ°Г 
 {
 	for (int i = 0; i < NUM_POINTS;i++)
 	{
@@ -238,7 +239,7 @@ double four4angel::Perimetr() // вычисление периметра
 	}
 	return Per;
 }
-double four4angel::Perimetr3d() // вычисление периметра
+double four4angel::Perimetr3d() // ГўГ»Г·ГЁГ±Г«ГҐГ­ГЁГҐ ГЇГҐГ°ГЁГ¬ГҐГІГ°Г 
 {
 	for (int i = 0; i < NUM_POINTS;i++)
 	{
@@ -247,12 +248,12 @@ double four4angel::Perimetr3d() // вычисление периметра
 	}
 	return Per*2 + 4*h;
 }
-double four4angel::Ploshad() // вычисление площади
+double four4angel::Ploshad() // ГўГ»Г·ГЁГ±Г«ГҐГ­ГЁГҐ ГЇГ«Г®Г№Г Г¤ГЁ
 {
 	S=d11*d22*sin(ugolvect(d1,d2))/2;
 	return S;
 }
-double four4angel::Ploshad3d() // вычисление площади полной поверхности
+double four4angel::Ploshad3d() // ГўГ»Г·ГЁГ±Г«ГҐГ­ГЁГҐ ГЇГ«Г®Г№Г Г¤ГЁ ГЇГ®Г«Г­Г®Г© ГЇГ®ГўГҐГ°ГµГ­Г®Г±ГІГЁ
 {
 	return d11 * d22 * sin(ugolvect(d1, d2)) + h * mv[0] + h * mv[1] + h * mv[2] + h * mv[3];
 }
@@ -260,7 +261,7 @@ double four4angel::Volume()
 {
 	return (d11 * d22 * sin(ugolvect(d1, d2)) / 2) * h;
 }
-double four4angel::PrintUgol(int i) // вывод угла по номеру вершины
+double four4angel::PrintUgol(int i) // ГўГ»ГўГ®Г¤ ГіГЈГ«Г  ГЇГ® Г­Г®Г¬ГҐГ°Гі ГўГҐГ°ГёГЁГ­Г»
 {
 	ugol[0] = Pi - ugolvect(v[0], v[3]);
 	ugol[1] = Pi - ugolvect(v[0], v[1]);
@@ -273,23 +274,23 @@ double four4angel::PrintUgol(int i) // вывод угла по номеру вершины
 			ugol[i] = 2 * Pi - ugol[i];
 	}
 	if (i - 1 >= 4 || i - 1 < 0)
-		cout << "Такой вершины нет";
+		cout << "Г’Г ГЄГ®Г© ГўГҐГ°ГёГЁГ­Г» Г­ГҐГІ";
 	else
-		cout << "Угол при " << i << " вершине равен " << ugol[i - 1] << " радиан или же приблизительно " << round(ugol[i - 1] * 180 / Pi) << " градусов " << endl;
+		cout << "Г“ГЈГ®Г« ГЇГ°ГЁ " << i << " ГўГҐГ°ГёГЁГ­ГҐ Г°Г ГўГҐГ­ " << ugol[i - 1] << " Г°Г Г¤ГЁГ Г­ ГЁГ«ГЁ Г¦ГҐ ГЇГ°ГЁГЎГ«ГЁГ§ГЁГІГҐГ«ГјГ­Г® " << round(ugol[i - 1] * 180 / Pi) << " ГЈГ°Г Г¤ГіГ±Г®Гў " << endl;
 	return ugol[i - 1];
 }
-double four4angel::PrintUgol(int i, int a) // вывод угла по сторонам между которыми он лежит
+double four4angel::PrintUgol(int i, int a) // ГўГ»ГўГ®Г¤ ГіГЈГ«Г  ГЇГ® Г±ГІГ®Г°Г®Г­Г Г¬ Г¬ГҐГ¦Г¤Гі ГЄГ®ГІГ®Г°Г»Г¬ГЁ Г®Г­ Г«ГҐГ¦ГЁГІ
 {
 	double r = Pi - ugolvect(v[i - 1], v[a - 1]);
 	if (r > Pi / 2)
 		r = 2 * Pi - r;
 	if (i - 1 >= 4 || i - 1 < 0 || -1 >= 4 || a - 1 < 0)
-		cout << "Такой стороны нет" << endl;
+		cout << "Г’Г ГЄГ®Г© Г±ГІГ®Г°Г®Г­Г» Г­ГҐГІ" << endl;
 	else
-		cout << "Угол между " << i << " и " << a << " сторонами равен  " << r << " радиан или же приблизительно " << round(r * 180 / Pi) << " градусов " << endl;
+		cout << "Г“ГЈГ®Г« Г¬ГҐГ¦Г¤Гі " << i << " ГЁ " << a << " Г±ГІГ®Г°Г®Г­Г Г¬ГЁ Г°Г ГўГҐГ­  " << r << " Г°Г Г¤ГЁГ Г­ ГЁГ«ГЁ Г¦ГҐ ГЇГ°ГЁГЎГ«ГЁГ§ГЁГІГҐГ«ГјГ­Г® " << round(r * 180 / Pi) << " ГЈГ°Г Г¤ГіГ±Г®Гў " << endl;
 	return r;
 }
-void four4angel::Vogn() // проверка на вогнутость/выпуклость
+void four4angel::Vogn() // ГЇГ°Г®ГўГҐГ°ГЄГ  Г­Г  ГўГ®ГЈГ­ГіГІГ®Г±ГІГј/ГўГ»ГЇГіГЄГ«Г®Г±ГІГј
 {
 	d1.x = p[2].x - p[0].x;
 	d1.y = p[2].y - p[0].y;
@@ -300,11 +301,11 @@ void four4angel::Vogn() // проверка на вогнутость/выпуклость
 	double v3 = d1.x * (p[3].y - p[0].y) - d1.y * (p[3].x - p[0].x);
 	double v4 = d1.x * v[0].y - d1.y * v[0].x;
 	if (v1 * v2 < 0 && v4 * v3 < 0)
-		cout << "Четырёхугольник выпуклый";
+		cout << "Г—ГҐГІГ»Г°ВёГµГіГЈГ®Г«ГјГ­ГЁГЄ ГўГ»ГЇГіГЄГ«Г»Г©";
 	else
-		cout << "Четырёхугольник вогнутый";
+		cout << "Г—ГҐГІГ»Г°ВёГµГіГЈГ®Г«ГјГ­ГЁГЄ ГўГ®ГЈГ­ГіГІГ»Г©";
 }
-void four4angel::Vogn3d() // проверка на вогнутость/выпуклость
+void four4angel::Vogn3d() // ГЇГ°Г®ГўГҐГ°ГЄГ  Г­Г  ГўГ®ГЈГ­ГіГІГ®Г±ГІГј/ГўГ»ГЇГіГЄГ«Г®Г±ГІГј
 {
 	d1.x = p[2].x - p[0].x;
 	d1.y = p[2].y - p[0].y;
@@ -315,12 +316,12 @@ void four4angel::Vogn3d() // проверка на вогнутость/выпуклость
 	double v3 = d1.x * (p[3].y - p[0].y) - d1.y * (p[3].x - p[0].x);
 	double v4 = d1.x * v[0].y - d1.y * v[0].x;
 	if (v1 * v2 < 0 && v4 * v3 < 0)
-		cout << "Основание призмы выпуклое";
+		cout << "ГЋГ±Г­Г®ГўГ Г­ГЁГҐ ГЇГ°ГЁГ§Г¬Г» ГўГ»ГЇГіГЄГ«Г®ГҐ";
 	else
-		cout << "Основание призмы вогнутое";
-		cout << "Это я добавила для гита";
+		cout << "ГЋГ±Г­Г®ГўГ Г­ГЁГҐ ГЇГ°ГЁГ§Г¬Г» ГўГ®ГЈГ­ГіГІГ®ГҐ";
+		cout << "ГќГІГ® Гї Г¤Г®ГЎГ ГўГЁГ«Г  Г¤Г«Гї ГЈГЁГІГ ";
 }
-four4angel::~four4angel(void) // деструктор
+four4angel::~four4angel(void) // Г¤ГҐГ±ГІГ°ГіГЄГІГ®Г°
 {
 
 }
