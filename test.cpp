@@ -11,6 +11,7 @@ four4angel::four4angel(void)
 	{
 		p[i].x = 0.0;
 		p[i].y = 0.0;
+		cout << "I don't have problems" << endl;
 	}
 }
 void four4angel::calcVectors() // функция считающая и выводящая вектора 
